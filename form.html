@@ -1,0 +1,90 @@
+ <!DOCTYPE html>
+ <html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <title>Submission Form</title>
+     <meta name="description" content="DESCRIPTION">
+
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+     <!--[if lt IE 9]>
+       <script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+     <![endif]-->
+     <link href="style.css" rel="stylesheet" type="text/css" />
+ </head>
+
+ <body>
+   <div class="form-style-5">
+   <form action="addData.php" method="post">
+   <fieldset>
+   <legend><span class="number">1</span> Candidate Info</legend>
+   <input type="text" name="firstname" id="firstname" placeholder="Your First Name *">
+   <input type="text" name = "lastname" id="lastname" placeholder="Your Last Name" />
+   <input type="email" name="email" id="email" placeholder="Your Email *">
+   <label for="school">Your School</label>
+   <select id="school" name="field4">
+   <optgroup name = "school" label="School">
+     <option value="LHS">Lisnaskea High School</option>
+     <option value="Potora">Potora Royal Grammer</option>
+     <option value="OU">The Open University</option>
+   </optgroup>
+   </select>
+   </fieldset>
+   <input type="submit" name="submitstudent" value="submit" onclick="return validate()"/>
+
+
+   </form>
+   <form action="retrieveData.php" method="post">
+   <fieldset>
+     <legend><span class="number">2</span>Retrieve Students</legend>
+     <label for="school">Chosen School</label>
+     <select id="school" name="school">
+       <option value="LHS">LHS</option>
+       <option value="Potora">Potora Royal Grammer</option>
+       <option value="OU">The Open University</option>
+     </select>
+   </fieldset>
+   <input type="submit" name="retrevestudent" value="submit" />
+   </form>
+   </div>
+
+
+  <script>
+    function fieldComp(y)
+    {
+      var x = document.getElementById(y).value;
+      console.log(x);
+
+      if (x == "" || x == "Your First Name *" || x == "Your Last Name *" || x == "Your Email *")
+      {
+        console.log("field not completed");
+        return "Please ensure all of the fields have been completed";
+      }
+      else {
+        console.log("field completed");
+        return "";
+            }
+
+
+    }
+
+    function validate()
+    {
+      console.log("Form validated");
+      var x = fieldComp("firstname") + fieldComp("lastname") + fieldComp("email");
+
+      if (x != "")
+      {
+        alert(x);
+        return false;
+      }
+      else {
+        return true;
+      }
+
+
+    }
+  </script>
+ </body>
+
+ </html>
